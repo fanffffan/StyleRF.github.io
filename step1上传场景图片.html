@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleRF | 场景图上传</title>
+    <style>
+        * {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>请上传您的场景图</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="images" multiple>
+        <button type="submit">上传</button>
+    </form>
+    
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // 阻止默认表单提交
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('http://192.168.1.8:5000/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    location.href = './step2数据预处理.html';
+                } else {
+                    const errorData = await response.json();
+                    alert('上传失败: ' + errorData.error);
+                }
+            } catch (error) {
+                alert('上传过程中发生错误: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
