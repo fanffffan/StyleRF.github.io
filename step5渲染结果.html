@@ -16,7 +16,7 @@
 
     <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
-            fetch('http://127.0.0.1:5000/download_logs')
+            fetch('https://127.0.0.1:5000/download_logs')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('网络响应失败');
