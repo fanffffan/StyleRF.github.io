@@ -3,39 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="style-src 'unsafe-inline'">
     <title>StyleRF | 开始训练</title>
-    <style>
-        * {
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/step5.css">
 </head>
 <body>
     <h2>渲染结果</h2> 
     <button id="downloadButton">下载日志文件夹</button>
 
-    <script>
-        document.getElementById('downloadButton').addEventListener('click', function() {
-            fetch('https://127.0.0.1:5000/download_logs')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('网络响应失败');
-                    }
-                    return response.blob();
-                })
-                .then(blob => {
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.style.display = 'none';
-                    a.href = url;
-                    a.download = 'log_style.tar.gz';
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                })
-                .catch(error => console.error('错误:', error));
-        });
+    <script src="./JavaScript/step5.js">
     </script>
     
 </body>

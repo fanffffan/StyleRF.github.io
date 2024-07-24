@@ -1,0 +1,12 @@
+* {
+    text-align: center;
+}
+#log {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 80%;
+    height: 300px;
+    overflow-y: auto;
+    margin: 0 auto;
+    text-align: left;
+}
